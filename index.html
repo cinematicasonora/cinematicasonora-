@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematica Sonora Records - Catalogo Audio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 3px solid #0f3460;
+            margin-bottom: 2rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-text {
+            font-family: 'Arial Black', 'Arial Bold', sans-serif;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo-line-1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo-line-2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: #4cc9f0;
+            margin-top: 0.2rem;
+        }
+        
+        .logo-line-3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #f0f0f0;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 2px solid #4361ee;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+        
+        .upload-section {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .upload-section h2 {
+            margin-bottom: 1.5rem;
+            color: #4cc9f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: #ddd;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background-color: #2a2a2a;
+            color: #f0f0f0;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .upload-btn {
+            background: linear-gradient(to right, #4361ee, #3a0ca3);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .upload-btn:hover {
+            background: linear-gradient(to right, #3a56d4, #2d0a8a);
+            transform: translateY(-2px);
+        }
+        
+        .library-section {
+            margin-top: 2rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-header h2 {
+            color: #4cc9f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-filter {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .search-box, .filter-select {
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background-color: #2a2a2a;
+            color: #f0f0f0;
+        }
+        
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .track-card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .track-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .track-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .track-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f0f0f0;
+        }
+        
+        .track-genre {
+            background-color: #4361ee;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .track-description {
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .audio-player {
+            width: 100%;
+            margin-bottom: 1rem;
+            background: #2a2a2a;
+            border-radius: 5px;
+        }
+        
+        .track-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4cc9f0;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .footer-contact {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #444;
+        }
+        
+        .footer-contact a {
+            color: #4cc9f0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-contact a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+        
+        .page-btn {
+            padding: 8px 15px;
+            background-color: #2a2a2a;
+            color: #f0f0f0;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .page-btn.active {
+            background-color: #4361ee;
+        }
+        
+        .page-btn:hover:not(.active) {
+            background-color: #3a3a3a;
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .tracks-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-line-1 {
+                font-size: 2.5rem;
+            }
+            
+            .logo-line-2 {
+                font-size: 2.2rem;
+            }
+            
+            .logo-line-3 {
+                font-size: 1.8rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .search-filter {
+                width: 100%;
+                flex-direction: column;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-line-1 {
+                font-size: 2rem;
+            }
+            
+            .logo-line-2 {
+                font-size: 1.8rem;
+            }
+            
+            .logo-line-3 {
+                font-size: 1.5rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+        }
+        
+        .logo-subtitle {
+            color: #b0b0b0;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Notifiche */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .notification.success {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .notification.error {
+            background: #f44336;
+            color: white;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo-text">
+                    <div class="logo-line-1">CINEMATICA</div>
+                    <div class="logo-line-2">SONORA</div>
+                    <div class="logo-line-3">RECORDS</div>
+                </div>
+                <div class="logo-subtitle">Catalogo Audio Professionale</div>
+            </div>
+            <p class="tagline">Produttore/Musicista con oltre 400 brani nel catalogo. Carica e gestisci la tua musica in modo semplice e professionale.</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="upload-section">
+            <h2><i class="fas fa-cloud-upload-alt"></i> Carica Nuovo Brani</h2>
+            <form class="upload-form" id="uploadForm">
+                <div class="form-group">
+                    <label for="trackTitle">Titolo del brano *</label>
+                    <input type="text" id="trackTitle" placeholder="Es: Midnight Groove" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="trackGenre">Genere *</label>
+                    <select id="trackGenre" required>
+                        <option value="">Seleziona genere</option>
+                        <option value="Cinematic">Cinematic</option>
+                        <option value="Soundtrack">Soundtrack</option>
+                        <option value="Electronic">Electronic</option>
+                        <option value="Hip Hop">Hip Hop</option>
+                        <option value="Ambient">Ambient</option>
+                        <option value="Classical">Classical</option>
+                        <option value="Experimental">Experimental</option>
+                        <option value="Jazz">Jazz</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="trackDescription">Descrizione</label>
+                    <textarea id="trackDescription" placeholder="Descrivi il tuo brano..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="trackFile">File Audio (MP3, WAV) *</label>
+                    <input type="file" id="trackFile" accept="audio/*" required>
+                </div>
+                
+                <button type="submit" class="upload-btn">
+                    <i class="fas fa-upload"></i> Carica Brani
+                </button>
+            </form>
+        </section>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="totalTracks">0</div>
+                <div class="stat-label">Brani Totali</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="totalGenres">0</div>
+                <div class="stat-label">Generi</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="totalDuration">0:00</div>
+                <div class="stat-label">Durata Totale</div>
+            </div>
+        </div>
+        
+        <section class="library-section">
+            <div class="section-header">
+                <h2><i class="fas fa-music"></i> Catalogo Cinematica Sonora</h2>
+                <div class="search-filter">
+                    <input type="text" class="search-box" id="searchBox" placeholder="Cerca brani...">
+                    <select class="filter-select" id="genreFilter">
+                        <option value="">Tutti i generi</option>
+                        <option value="Cinematic">Cinematic</option>
+                        <option value="Soundtrack">Soundtrack</option>
+                        <option value="Electronic">Electronic</option>
+                        <option value="Hip Hop">Hip Hop</option>
+                        <option value="Ambient">Ambient</option>
+                        <option value="Classical">Classical</option>
+                        <option value="Experimental">Experimental</option>
+                        <option value="Jazz">Jazz</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="tracks-grid" id="tracksContainer">
+                <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #888;">
+                    <i class="fas fa-music" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h3>Caricamento catalogo...</h3>
+                    <div class="loading-spinner" style="margin: 0 auto;"></div>
+                </div>
+            </div>
+            
+            <div class="pagination" id="pagination"></div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button id="exportBtn" class="upload-btn" style="background: #28a745;">
+                    <i class="fas fa-download"></i> Esporta Catalogo (JSON)
+                </button>
+                <button id="importBtn" class="upload-btn" style="background: #17a2b8; margin-left: 10px;">
+                    <i class="fas fa-upload"></i> Importa Brani
+                </button>
+                <button id="clearAllBtn" class="upload-btn" style="background: #dc3545; margin-left: 10px;">
+                    <i class="fas fa-trash"></i> Cancella Tutto
+                </button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© <span id="currentYear"></span> Cinematica Sonora Records - Tutti i diritti riservati</p>
+            <p>I file audio sono salvati nel tuo browser (IndexedDB)</p>
+            <div class="footer-contact">
+                <p>Contatto: <a href="mailto:minimalgroove@libero.it">minimalgroove@libero.it</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Nascondi input per import -->
+    <input type="file" id="importFile" accept=".json" style="display: none;">
+    
+    <script>
+        // ==============================================
+        // SISTEMA COMPLETO CON INDEXEDDB PER FILE AUDIO
+        // ==============================================
+        
+        // Anno corrente
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Database IndexedDB
+        let db;
+        const DB_NAME = 'CinematicaSonoraDB';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'audioTracks';
+        
+        // Inizializzazione
+        document.addEventListener('DOMContentLoaded', function() {
+            initDatabase();
+        });
+        
+        // Inizializza IndexedDB
+        function initDatabase() {
+            const request = indexedDB.open(DB_NAME, DB_VERSION);
+            
+            request.onerror = function(event) {
+                console.error("Errore IndexedDB:", event.target.error);
+                showNotification('Errore database. Usa un browser moderno.', 'error');
+            };
+            
+            request.onsuccess = function(event) {
+                db = event.target.result;
+                console.log("Database IndexedDB pronto");
+                loadTracks();
+                setupEventListeners();
+            };
+            
+            request.onupgradeneeded = function(event) {
+                const db = event.target.result;
+                
+                // Crea lo store se non esiste
+                if (!db.objectStoreNames.contains(STORE_NAME)) {
+                    const objectStore = db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+                    objectStore.createIndex('title', 'title', { unique: false });
+                    objectStore.createIndex('genre', 'genre', { unique: false });
+                    objectStore.createIndex('uploadDate', 'uploadDate', { unique: false });
+                    console.log("Store IndexedDB creato");
+                }
+            };
+        }
+        
+        // Carica i brani dal database
+        function loadTracks() {
+            if (!db) {
+                console.error("Database non inizializzato");
+                return;
+            }
+            
+            const transaction = db.transaction([STORE_NAME], 'readonly');
+            const store = transaction.objectStore(STORE_NAME);
+            const request = store.getAll();
+            
+            request.onsuccess = function(event) {
+                const tracks = event.target.result || [];
+                renderTracks();
+                updateStats();
+            };
+            
+            request.onerror = function(event) {
+                console.error("Errore caricamento brani:", event.target.error);
+            };
+        }
+        
+        // Salva un brano nel database
+        function saveTrackToDB(track, audioFile, callback) {
+            if (!db) {
+                console.error("Database non inizializzato");
+                callback(false);
+                return;
+            }
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                const audioData = event.target.result;
+                
+                // Aggiungi i dati audio al track
+                track.audioData = audioData;
+                
+                const transaction = db.transaction([STORE_NAME], 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.add(track);
+                
+                request.onsuccess = function(event) {
+                    console.log("Brano salvato nel database con ID:", track.id);
+                    callback(true);
+                };
+                
+                request.onerror = function(event) {
+                    console.error("Errore salvataggio brano:", event.target.error);
+                    callback(false);
+                };
+            };
+            
+            reader.readAsArrayBuffer(audioFile);
+        }
+        
+        // Ottieni un brano dal database
+        function getTrackFromDB(trackId, callback) {
+            if (!db) {
+                console.error("Database non inizializzato");
+                callback(null);
+                return;
+            }
+            
+            const transaction = db.transaction([STORE_NAME], 'readonly');
+            const store = transaction.objectStore(STORE_NAME);
+            const request = store.get(trackId);
+            
+            request.onsuccess = function(event) {
+                callback(event.target.result);
+            };
+            
+            request.onerror = function(event) {
+                console.error("Errore recupero brano:", event.target.error);
+                callback(null);
+            };
+        }
+        
+        // Ottieni tutti i brani dal database
+        function getAllTracksFromDB(callback) {
+            if (!db) {
+                console.error("Database non inizializzato");
+                callback([]);
+                return;
+            }
+            
+            const transaction = db.transaction([STORE_NAME], 'readonly');
+            const store = transaction.objectStore(STORE_NAME);
+            const request = store.getAll();
+            
+            request.onsuccess = function(event) {
+                callback(event.target.result || []);
+            };
+            
+            request.onerror = function(event) {
+                console.error("Errore recupero tutti i brani:", event.target.error);
+                callback([]);
+            };
+        }
+        
+        // Elimina un brano dal database
+        function deleteTrackFromDB(trackId, callback) {
+            if (!db) {
+                console.error("Database non inizializzato");
+                callback(false);
+                return;
+            }
+            
+            const transaction = db.transaction([STORE_NAME], 'readwrite');
+            const store = transaction.objectStore(STORE_NAME);
+            const request = store.delete(trackId);
+            
+            request.onsuccess = function(event) {
+                console.log("Brano eliminato:", trackId);
+                callback(true);
+            };
+            
+            request.onerror = function(event) {
+                console.error("Errore eliminazione brano:", event.target.error);
+                callback(false);
+            };
+        }
+        
+        // Elimina tutti i brani dal database
+        function clearAllTracksFromDB(callback) {
+            if (!db) {
+                console.error("Database non inizializzato");
+                callback(false);
+                return;
+            }
+            
+            const transaction = db.transaction([STORE_NAME], 'readwrite');
+            const store = transaction.objectStore(STORE_NAME);
+            const request = store.clear();
+            
+            request.onsuccess = function(event) {
+                console.log("Tutti i brani eliminati");
+                callback(true);
+            };
+            
+            request.onerror = function(event) {
+                console.error("Errore eliminazione tutti i brani:", event.target.error);
+                callback(false);
+            };
+        }
+        
+        // Paginazione
+        let currentPage = 1;
+        const tracksPerPage = 6;
+        let allTracks = [];
+        let filteredTracks = [];
+        
+        // FUNZIONE PRINCIPALE: Carica un brano
+        async function handleUpload(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('trackTitle').value.trim();
+            const genre = document.getElementById('trackGenre').value;
+            const description = document.getElementById('trackDescription').value.trim();
+            const audioFile = document.getElementById('trackFile').files[0];
+            
+            // Validazione
+            if (!title || !genre || !audioFile) {
+                showNotification('Compila tutti i campi obbligatori e seleziona un file!', 'error');
+                return;
+            }
+            
+            // Controlla che sia un file audio
+            if (!audioFile.type.startsWith('audio/')) {
+                showNotification('Seleziona un file audio (MP3, WAV, etc.)', 'error');
+                return;
+            }
+            
+            // Limite di dimensione (50MB)
+            if (audioFile.size > 50 * 1024 * 1024) {
+                showNotification('File troppo grande (max 50MB)', 'error');
+                return;
+            }
+            
+            // Mostra caricamento
+            const uploadBtn = document.querySelector('#uploadForm .upload-btn');
+            const originalText = uploadBtn.innerHTML;
+            uploadBtn.innerHTML = '<div class="loading-spinner"></div> Caricamento...';
+            uploadBtn.disabled = true;
+            
+            try {
+                // Crea il nuovo brano
+                const newTrack = {
+                    id: Date.now(), // ID unico
+                    title: title,
+                    genre: genre,
+                    description: description || 'Nessuna descrizione',
+                    fileName: audioFile.name,
+                    fileSize: formatFileSize(audioFile.size),
+                    duration: '0:00', // Potresti calcolarlo
+                    uploadDate: new Date().toLocaleDateString('it-IT'),
+                    plays: 0
+                };
+                
+                // Salva nel database
+                await new Promise((resolve, reject) => {
+                    saveTrackToDB(newTrack, audioFile, function(success) {
+                        if (success) {
+                            resolve();
+                        } else {
+                            reject(new Error('Errore salvataggio nel database'));
+                        }
+                    });
+                });
+                
+                // Aggiorna l'interfaccia
+                loadTracks();
+                
+                // Reset del form
+                document.getElementById('uploadForm').reset();
+                
+                // Mostra notifica
+                showNotification(`"${title}" caricato con successo!`, 'success');
+                
+            } catch (error) {
+                console.error('Errore caricamento:', error);
+                showNotification('Errore nel caricamento del brano', 'error');
+            } finally {
+                // Ripristina bottone
+                uploadBtn.innerHTML = originalText;
+                uploadBtn.disabled = false;
+            }
+        }
+        
+        // Mostra i brani
+        async function renderTracks(page = 1) {
+            const tracksContainer = document.getElementById('tracksContainer');
+            const paginationContainer = document.getElementById('pagination');
+            
+            // Mostra caricamento
+            tracksContainer.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #888;">
+                    <i class="fas fa-music" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h3>Caricamento brani...</h3>
+                    <div class="loading-spinner" style="margin: 0 auto;"></div>
+                </div>
+            `;
+            
+            // Carica i brani dal database
+            getAllTracksFromDB(async function(tracks) {
+                allTracks = tracks || [];
+                
+                // Filtri
+                const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+                const genreFilter = document.getElementById('genreFilter').value;
+                
+                filteredTracks = allTracks.filter(track => {
+                    const matchesSearch = track.title.toLowerCase().includes(searchTerm) || 
+                                         (track.description && track.description.toLowerCase().includes(searchTerm));
+                    const matchesGenre = !genreFilter || track.genre === genreFilter;
+                    return matchesSearch && matchesGenre;
+                });
+                
+                // Paginazione
+                const totalPages = Math.ceil(filteredTracks.length / tracksPerPage) || 1;
+                currentPage = Math.min(Math.max(page, 1), totalPages);
+                
+                const startIndex = (currentPage - 1) * tracksPerPage;
+                const endIndex = startIndex + tracksPerPage;
+                const tracksToShow = filteredTracks.slice(startIndex, endIndex);
+                
+                // Se non ci sono brani
+                if (tracksToShow.length === 0) {
+                    tracksContainer.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #888;">
+                            <i class="fas fa-music" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <h3>Nessun brano trovato</h3>
+                            <p>Prova a modificare i criteri di ricerca o carica un nuovo brano.</p>
+                        </div>
+                    `;
+                    paginationContainer.innerHTML = '';
+                    return;
+                }
+                
+                // Crea le card per ogni brano
+                let html = '';
+                
+                for (let i = 0; i < tracksToShow.length; i++) {
+                    const track = tracksToShow[i];
+                    const trackIndex = startIndex + i;
+                    
+                    // Crea URL per l'audio dai dati binari
+                    let audioUrl = '';
+                    if (track.audioData) {
+                        const blob = new Blob([track.audioData], { type: 'audio/mpeg' });
+                        audioUrl = URL.createObjectURL(blob);
+                    }
+                    
+                    html += `
+                        <div class="track-card">
+                            <div class="track-header">
+                                <h3 class="track-title">${escapeHtml(track.title)}</h3>
+                                <span class="track-genre">${escapeHtml(track.genre)}</span>
+                            </div>
+                            <p class="track-description">${escapeHtml(track.description || '')}</p>
+                            
+                            <!-- PLAYER CON AUDIO REALE -->
+                            <audio controls class="audio-player" preload="metadata" data-track-id="${track.id}">
+                                ${audioUrl ? `<source src="${audioUrl}" type="audio/mpeg">` : ''}
+                                Il tuo browser non supporta l'elemento audio.
+                            </audio>
+                            
+                            <div class="track-meta">
+                                <span><i class="far fa-clock"></i> ${track.duration || '0:00'}</span>
+                                <span><i class="far fa-calendar-alt"></i> ${track.uploadDate || ''}</span>
+                                <span><i class="fas fa-hdd"></i> ${track.fileSize || ''}</span>
+                                <span><i class="fas fa-play-circle"></i> ${track.plays || 0}</span>
+                                <button class="delete-track-btn" data-track-id="${track.id}" style="background: #dc3545; color: white; border: none; padding: 2px 8px; border-radius: 3px; cursor: pointer; font-size: 0.8rem;">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                tracksContainer.innerHTML = html;
+                
+                // Aggiungi event listener per tracciare le riproduzioni
+                document.querySelectorAll('audio[data-track-id]').forEach(audio => {
+                    const trackId = parseInt(audio.getAttribute('data-track-id'));
+                    
+                    audio.addEventListener('play', async () => {
+                        // Trova il track
+                        getTrackFromDB(trackId, function(track) {
+                            if (track) {
+                                // Aggiorna il conteggio plays
+                                track.plays = (track.plays || 0) + 1;
+                                
+                                // Salva nel database
+                                const transaction = db.transaction([STORE_NAME], 'readwrite');
+                                const store = transaction.objectStore(STORE_NAME);
+                                store.put(track);
+                            }
+                        });
+                    });
+                });
+                
+                // Aggiungi event listener per eliminare brani
+                document.querySelectorAll('.delete-track-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const trackId = parseInt(this.getAttribute('data-track-id'));
+                        if (confirm('Eliminare questo brano?')) {
+                            deleteTrackFromDB(trackId, function(success) {
+                                if (success) {
+                                    showNotification('Brano eliminato', 'success');
+                                    loadTracks();
+                                } else {
+                                    showNotification('Errore eliminazione', 'error');
+                                }
+                            });
+                        }
+                    });
+                });
+                
+                // Paginazione
+                renderPagination(totalPages);
+            });
+        }
+        
+        // Paginazione
+        function renderPagination(totalPages) {
+            const paginationContainer = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                paginationContainer.innerHTML = '';
+                return;
+            }
+            
+            let html = '';
+            
+            if (currentPage > 1) {
+                html += `<button class="page-btn" data-page="${currentPage - 1}">
+                    <i class="fas fa-chevron-left"></i>
+                </button>`;
+            }
+            
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+                } else if (i === currentPage - 2 || i === currentPage + 2) {
+                    html += `<span class="page-btn" style="border: none; background: transparent;">...</span>`;
+                }
+            }
+            
+            if (currentPage < totalPages) {
+                html += `<button class="page-btn" data-page="${currentPage + 1}">
+                    <i class="fas fa-chevron-right"></i>
+                </button>`;
+            }
+            
+            paginationContainer.innerHTML = html;
+            
+            // Event listeners per paginazione
+            document.querySelectorAll('.page-btn[data-page]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const page = parseInt(this.getAttribute('data-page'));
+                    if (page) {
+                        renderTracks(page);
+                    }
+                });
+            });
+        }
+        
+        // Aggiorna statistiche
+        function updateStats() {
+            getAllTracksFromDB(function(tracks) {
+                document.getElementById('totalTracks').textContent = tracks.length;
+                
+                // Generi unici
+                const genres = [...new Set(tracks.map(track => track.genre))];
+                document.getElementById('totalGenres').textContent = genres.length;
+                
+                // Durata totale approssimativa
+                const totalMinutes = tracks.length * 4.5;
+                const hours = Math.floor(totalMinutes / 60);
+                const minutes = Math.round(totalMinutes % 60);
+                document.getElementById('totalDuration').textContent = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+            });
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            // Form di upload
+            document.getElementById('uploadForm').addEventListener('submit', handleUpload);
+            
+            // Ricerca e filtri
+            document.getElementById('searchBox').addEventListener('input', () => renderTracks(1));
+            document.getElementById('genreFilter').addEventListener('change', () => renderTracks(1));
+            
+            // Export/Import
+            document.getElementById('exportBtn').addEventListener('click', exportCatalog);
+            document.getElementById('importBtn').addEventListener('click', () => {
+                document.getElementById('importFile').click();
+            });
+            
+            document.getElementById('importFile').addEventListener('change', importCatalog);
+            
+            // Cancella tutto
+            document.getElementById('clearAllBtn').addEventListener('click', function() {
+                if (confirm('ATTENZIONE: Eliminare TUTTI i brani? Questa azione non può essere annullata.')) {
+                    clearAllTracksFromDB(function(success) {
+                        if (success) {
+                            showNotification('Tutti i brani eliminati', 'success');
+                            loadTracks();
+                        } else {
+                            showNotification('Errore eliminazione', 'error');
+                        }
+                    });
+                }
+            });
+        }
+        
+        // Esporta catalogo
+        async function exportCatalog() {
+            try {
+                getAllTracksFromDB(async function(tracks) {
+                    // Rimuovi i dati audio binari per ridurre la dimensione
+                    const exportTracks = tracks.map(track => {
+                        const { audioData, ...trackWithoutAudio } = track;
+                        return trackWithoutAudio;
+                    });
+                    
+                    const dataStr = JSON.stringify(exportTracks, null, 2);
+                    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                    const url = URL.createObjectURL(dataBlob);
+                    const link = document.createElement('a');
+                    
+                    const fileName = `cinematica-sonora-backup-${new Date().toISOString().slice(0, 10)}.json`;
+                    
+                    link.href = url;
+                    link.download = fileName;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                    
+                    showNotification('Catalogo esportato con successo!', 'success');
+                });
+            } catch (error) {
+                console.error('Errore esportazione:', error);
+                showNotification('Errore nell\'esportazione', 'error');
+            }
+        }
+        
+        // Importa catalogo
+        function importCatalog(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            
+            reader.onload = async function(e) {
+                try {
+                    const importedTracks = JSON.parse(e.target.result);
+                    
+                    if (!Array.isArray(importedTracks)) {
+                        throw new Error('Formato file non valido');
+                    }
+                    
+                    if (confirm(`Importare ${importedTracks.length} brani (solo metadati)? I file audio devono essere ricaricati manualmente.`)) {
+                        // Importa solo i metadati
+                        getAllTracksFromDB(function(existingTracks) {
+                            const existingIds = new Set(existingTracks.map(t => t.id));
+                            let importedCount = 0;
+                            
+                            importedTracks.forEach(track => {
+                                if (!existingIds.has(track.id)) {
+                                    // Salva nel database (senza audio)
+                                    const transaction = db.transaction([STORE_NAME], 'readwrite');
+                                    const store = transaction.objectStore(STORE_NAME);
+                                    store.add(track);
+                                    importedCount++;
+                                }
+                            });
+                            
+                            showNotification(`${importedCount} nuovi brani importati (solo metadati)`, 'success');
+                            loadTracks();
+                        });
+                    }
+                    
+                } catch (error) {
+                    console.error('Errore importazione:', error);
+                    showNotification('Errore nell\'importazione del file JSON', 'error');
+                }
+                
+                // Reset input
+                event.target.value = '';
+            };
+            
+            reader.readAsText(file);
+        }
+        
+        // Utility functions
+        function showNotification(message, type = 'info') {
+            // Rimuovi notifiche precedenti
+            const existing = document.querySelectorAll('.notification');
+            existing.forEach(n => n.remove());
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                ${escapeHtml(message)}
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.animation = 'slideIn 0.3s ease reverse';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 3000);
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Messaggio iniziale
+        console.log('🎵 Sistema Cinematica Sonora Records pronto!');
+        console.log('File audio salvati in IndexedDB per riproduzione persistente.');
+    </script>
+</body>
+</html>
